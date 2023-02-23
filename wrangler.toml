@@ -1,0 +1,12 @@
+name = "datasa"
+compatibility_date = "2023-02-23"
+
+[[ d1_databases ]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "neworder-db"
+database_id = "1b82214b-0979-4ffd-8148-c3eabc1bffc8"
+preview_database_id = "1b82214b-0979-4ffd-8148-c3eabc1bffc8"
+
+kv_namespaces = [
+    { binding = "SESSION_STORAGE", id = "ae3e4a27ca7f40ccb9a5fbb3106bd0f4", preview_id = "ae3e4a27ca7f40ccb9a5fbb3106bd0f4" }
+]
