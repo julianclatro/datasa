@@ -4,13 +4,13 @@
   "scripts": {
     "build": "remix build",
     "dev:remix": "remix watch",
-    "dev:wrangler": "cross-env NODE_ENV=development npm run wrangler --ip 127.0.0.1",
+    "dev:wrangler": "cross-env NODE_ENV=development npm run wrangler",
     "dev": "npm-run-all build --parallel \"dev:*\"",
     "start": "cross-env NODE_ENV=production npm run wrangler",
     "db:seeds": "npx wrangler d1 execute neworder-db --file ./db/schema.sql",
-    "db:seeds:local": "cat ./db/schema.sql | sqlite3 ./db/d1/DB.sqlite3",
+    "db:seeds:local": "npx wrangler d1 execute neworder-db --file ./db/schema.sql --local",
     "typecheck": "tsc",
-    "wrangler": "wrangler pages dev ./public"
+    "wrangler": "wrangler pages dev ./public --ip 0.0.0.0 --local --persist"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^1.13.0",

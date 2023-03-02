@@ -3,10 +3,10 @@ compatibility_date = "2023-02-23"
 
 [[ d1_databases ]]
 binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "neworder-db"
-database_id = "1b82214b-0979-4ffd-8148-c3eabc1bffc8"
-preview_database_id = "1b82214b-0979-4ffd-8148-c3eabc1bffc8"
+database_name = "datasa"
+database_id = "9b2fa340-621b-4939-9166-59af9fc12ece"
+preview_database_id = "9b2fa340-621b-4939-9166-59af9fc12ece"
 
 kv_namespaces = [
-    { binding = "SESSION_STORAGE", id = "ae3e4a27ca7f40ccb9a5fbb3106bd0f4", preview_id = "ae3e4a27ca7f40ccb9a5fbb3106bd0f4" }
+    { binding = "SESSION_STORAGE", id = "4d01ce53d9474097a76c8593043683fa", preview_id = "4d01ce53d9474097a76c8593043683fa" }
 ]
