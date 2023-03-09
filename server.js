@@ -12,8 +12,8 @@ const handleRequest = createPagesFunctionHandler({
   getLoadContext: (context) => {
     const sessionStorage = createWorkersKVSessionStorage({
       kv: context.env.SESSION_STORAGE,
-      cookie: createCookie("__session", {
-        secrets: ["r3m1xr0ck5"],
+      cookie: createCookie("__datasa_session", {
+        secrets: [context.env.SECRET_KEY],
         sameSite: true,
         secure: true,
         path: '/'

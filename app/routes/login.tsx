@@ -13,7 +13,7 @@ export default function Login() {
     <div>
       <h1>Nueva Sesión</h1>
       <fetcher.Form method="post" action="/sessions/new">
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 w-[720px]">
           <label>Usuario</label>
           <input type="text" name="username" id="username"/>
           <label>Contraseña</label>

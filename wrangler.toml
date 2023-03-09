@@ -1,12 +1,17 @@
 name = "datasa"
 compatibility_date = "2023-02-23"
 
+kv_namespaces = [
+    { binding = "SESSION_STORAGE", id = "4d01ce53d9474097a76c8593043683fa", preview_id = "4d01ce53d9474097a76c8593043683fa" }
+]
+
+[vars]
+API_TOKEN = "example_dev_token"
+
 [[ d1_databases ]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "datasa"
 database_id = "9b2fa340-621b-4939-9166-59af9fc12ece"
 preview_database_id = "9b2fa340-621b-4939-9166-59af9fc12ece"
 
-kv_namespaces = [
-    { binding = "SESSION_STORAGE", id = "4d01ce53d9474097a76c8593043683fa", preview_id = "4d01ce53d9474097a76c8593043683fa" }
-]
+

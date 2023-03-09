@@ -34,19 +34,20 @@ export let action: ActionFunction = async ({
   let password = form.get('password');
   const { env, sessionStorage }: any = context
   // console.log('env', env)
-  const { API_HOST, JWT_SECRET_KEY }: any = env;
+  // const { API_HOST, JWT_SECRET_KEY }: any = env;
+  // console.log("sessionStorage", env)
   console.log("LOGIN INFO", typeof username, typeof password, username, password)
 
-  if (typeof username !== 'string' || typeof password !== 'string') {
-    return { formError: `Form not submitted correctly.` };
-  }
+  // if (typeof username !== 'string' || typeof password !== 'string') {
+  //   return { formError: `Form not submitted correctly.` };
+  // }
   
-  let fields = { username, password };
-  let fieldErrors = {
-    username: validateusername(username),
-    password: validateLenght(password)
-  };
-  if (Object.values(fieldErrors).some(Boolean)) return { fieldErrors, fields };
+  // let fields = { username, password };
+  // let fieldErrors = {
+  //   username: validateusername(username),
+  //   password: validateLenght(password)
+  // };
+  // if (Object.values(fieldErrors).some(Boolean)) return { fieldErrors, fields };
   try {
    
     return await createUserSession(sessionStorage, { isAuthed: true })

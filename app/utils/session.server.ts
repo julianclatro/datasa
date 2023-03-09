@@ -5,7 +5,7 @@ export async function createUserSession(sessionStorage: Storage, { isAuthed }: a
   session.set("data", {
     isAuthed,
   })
-  return redirect('/', {
+  return redirect('/admin', {
     headers: {
       "Set-Cookie": await sessionStorage.commitSession(session),
     },
