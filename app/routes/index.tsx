@@ -18,13 +18,13 @@ export async function loader({
 
 export default function Index() {
   const { posts, axis } = useLoaderData();
-  const [ data, setData] = React.useState()
+  const [ data, setData] = React.useState();
 
   return (
     <div className="w-[720px] mx-auto">
-      <div className="flex justify-center flex-wrap flex-row space-x-4 mt-4 p-8 space-y-4">
+      <div className="flex justify-center flex-wrap flex-row mt-4 p-8 gap-4">
         {axis.map((axi: any, key: number) => {
-          return <div key={key} className={`p-4 border border-red-400 rounded-lg ${key === 0 && 'mt-4'}`}>{axi.name}</div>
+          return <div key={key} className={`p-4 border border-red-400 rounded-lg`}>{axi.name}</div>
         })}
       </div>
       <div className="flex flex-col space-y-4">

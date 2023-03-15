@@ -2,7 +2,7 @@ import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "react-router";
 import { Post } from "~/models/Post";
-
+import { Table } from '~/components/Table';
 export async function loader({
 	context,
 	request,
@@ -17,15 +17,20 @@ export async function loader({
 export default function Posts() {
   const { posts } = useLoaderData();
   console.log('posts', posts)
+  const data = posts.map(({information, publish_date}: any) => {
+    return [
+      { value: { text: 'Editar', onClick: () => console.log('Hello')}, type: 'button'},
+      { value: publish_date, type: 'simple'},
+      { value: information, type: 'simple'}
+    ]
+  })
+
   return (
-    <div>
-      {
-        posts.map((post: any, key: number) => {
-          return <div key={key}>
-            {post.information}
-          </div>
-        })
-      }
+    <div className="mx-auto w-[1080px]">
+      <Table
+        header={['', 'Fecha', 'Dato']} 
+        data={data}      
+      />
     </div>
   );
 }
