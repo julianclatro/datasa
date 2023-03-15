@@ -21,7 +21,7 @@ export let action: ActionFunction = async ({
     const fields = Array.from(form.entries())
     const data: any = Object.fromEntries(fields);
     console.log('data', data)
-    return redirect('/')
+    return redirect('/admin/posts')
   } catch (error: any) {
     return json({message: 'ERROR'})
   }

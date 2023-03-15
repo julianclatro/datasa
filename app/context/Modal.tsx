@@ -1,6 +1,6 @@
 import React, { type ReactElement, type FunctionComponent } from 'react';
 import { Modal as ModalComponent } from '~/components/Modal';
-
+import { EditPost } from '~/components/EditPost'
 type ModalContextType = {
   isOpen: boolean;
   openModal: (action: {
@@ -22,6 +22,8 @@ enum ModalTypeE {
 
 const modalAssert = (action: { type: string; content?: any }) => {
   switch (action.type) {
+    case ModalTypeE.EDIT_POST:
+      return <EditPost post={action.content} />
     default:
       return <></>;
   }

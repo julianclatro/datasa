@@ -1,6 +1,6 @@
 import stylesheet from "~/tailwind.css";
 import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
-
+import { ModalProvider } from "~/context/Modal";
 import {
   Links,
   LiveReload,
@@ -27,7 +27,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <ModalProvider>
+          <div>
+              <Outlet />
+          </div>
+        </ModalProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

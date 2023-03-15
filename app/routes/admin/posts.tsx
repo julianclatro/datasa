@@ -1,8 +1,10 @@
 import { type LoaderArgs } from "@remix-run/cloudflare";
+import { Button } from '~/components/Button'
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "react-router";
 import { Post } from "~/models/Post";
 import { Table } from '~/components/Table';
+import { Link } from '@remix-run/react'
 export async function loader({
 	context,
 	request,
@@ -26,7 +28,11 @@ export default function Posts() {
   })
 
   return (
-    <div className="mx-auto w-[1080px]">
+    <div className="mx-auto w-[1080px] mt-[80px]">
+      <div className="flex flex-row justify-between">
+        <div className="text-xl font-bold mb-[40px] ">Datos</div>
+        <div><Button text="Nuevo" type="link" component={Link} to="/admin/posts/new" /></div>
+      </div>
       <Table
         header={['', 'Fecha', 'Dato']} 
         data={data}      
