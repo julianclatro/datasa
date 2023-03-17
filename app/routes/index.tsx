@@ -17,7 +17,7 @@ export async function loader({
 }
 
 export default function Index() {
-  const { posts, axis } = useLoaderData();
+  const { posts, axis }: any = useLoaderData();
   const [ data, setData] = React.useState();
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { Menu } from '@headlessui/react';
 import { Popover } from '@headlessui/react'
-// import { Icon } from '../Icon';
+import { Icon } from './Icon';
 
 
 type ButtonProps = {
@@ -123,7 +123,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   const dropdownStyle = clsx(
     `${active ? 'bg-neutral-150 text-neutral-800' : 'text-neutral-600'}`,
     disabled && 'cursor-not-allowed bg-neutral-100 hover:bg-neutral-100', 
-    `group flex items-center py-[8px] px-[16px]  text-sm w-full
+    `group flex items-center py-[8px] px-[16px] rounded-md text-sm w-full
     hover:outline-none hover:bg-neutral-100 hover:text-primary-400
     hover:ring-[1px] hover:ring-primary-200 hover:ring-offset-neutral-50
     focus:outline-none focus:bg-neutral-100 focus:text-primary-400
@@ -169,14 +169,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       <Menu.Button className={buttonStyle} disabled={disabled}>
         {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -188,14 +188,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       <Popover.Button className={buttonStyle} disabled={disabled}>
         {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -206,14 +206,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
     return <button type="submit" className={buttonStyle}>
           {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -231,14 +231,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
         >
           {!!icon && !loading ?
             <div className={iconStyle}>
-              {/* <Icon
+              <Icon
                 name={icon}
                 size={size}
-              /> */}
+              />
             </div>
             : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -255,14 +255,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       >
         {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -281,14 +281,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
         >
           {!!icon && !loading ?
             <div className={iconStyle}>
-              {/* <Icon
+              <Icon
                 name={icon}
                 size={size}
-              /> */}
+              />
             </div>
             : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={size} viewBox="0 0 16 16" />
               </div>
             </div>
           }
@@ -310,14 +310,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       <div className={variant === 'dropdown' ? dropdownStyle : buttonStyle}>
         {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
           <div className="origin-center animate-spin">
-            {/* <Icon name="spinner" size={size} viewBox="0 0 16 16" /> */}
+            <Icon name="spinner" size={size} viewBox="0 0 16 16" />
           </div>
         </div>
         }
@@ -335,14 +335,14 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
     >
         {!!icon && !loading ?
           <div className={iconStyle}>
-            {/* <Icon
+            <Icon
               name={icon}
               size={size}
-            /> */}
+            />
           </div>
           : loading && <div className="pr-[8px]">
               <div className="origin-center animate-spin">
-                {/* <Icon name="spinner" size={!icon ? 'tiny' : size} viewBox="0 0 16 16" /> */}
+                <Icon name="spinner" size={!icon ? 'tiny' : size} viewBox="0 0 16 16" />
               </div>
             </div>
           }

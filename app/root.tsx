@@ -26,10 +26,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="light">
         <ModalProvider>
           <div>
-              <Outlet />
+            <Outlet />
           </div>
         </ModalProvider>
         <ScrollRestoration />

@@ -1,10 +1,11 @@
 import { type LoaderArgs } from "@remix-run/cloudflare";
-import { Button } from '~/components/Button'
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "react-router";
-import { Post } from "~/models/Post";
+import { Post } from "~/models/Post.server";
 import { Table } from '~/components/Table';
 import { Link } from '@remix-run/react'
+import { useModal } from "~/context/Modal";
+
 export async function loader({
 	context,
 	request,
@@ -16,27 +17,25 @@ export async function loader({
   return json({ posts });
 }
 
+
 export default function Posts() {
-  const { posts } = useLoaderData();
+  const { posts }: any = useLoaderData();
   console.log('posts', posts)
-  const data = posts.map(({information, publish_date}: any) => {
+  const { openModal } = useModal()
+  const data = posts.map((post: any) => {
     return [
-      { value: { text: 'Editar', onClick: () => console.log('Hello')}, type: 'button'},
-      { value: publish_date, type: 'simple'},
-      { value: information, type: 'simple'}
+      { value: post.publish_date, type: 'simple'},
+      { value: post.information, type: 'simple'},
+      { value: { icon: 'edit', onClick: () => openModal({type: 'edit_post', content: post })}, type: 'button'},
     ]
   })
 
-  return (
-    <div className="mx-auto w-[1080px] mt-[80px]">
-      <div className="flex flex-row justify-between">
-        <div className="text-xl font-bold mb-[40px] ">Datos</div>
-        <div><Button text="Nuevo" type="link" component={Link} to="/admin/posts/new" /></div>
-      </div>
+
+  return (      
       <Table
-        header={['', 'Fecha', 'Dato']} 
+        header={['Fecha', 'Dato', 'Acciones']} 
         data={data}      
       />
-    </div>
+    
   );
 }

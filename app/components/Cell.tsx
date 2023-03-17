@@ -32,7 +32,7 @@ export const Cell: React.FC<CellProps> = ({ type, value, component: Component })
   const cellAssert = (type: string, value: string | { text: string, to: string } | any) => {  
     switch (type) {
       case 'simple':
-        return <div className="text-paragraph-small-medium px-6 py-4">{value}</div>;
+        return <div className="whitespace-normal px-6 py-4">{value}</div>;
 
       case 'description':
         return (
@@ -60,7 +60,7 @@ export const Cell: React.FC<CellProps> = ({ type, value, component: Component })
           </div>
         );
       case 'button':
-        return <><Button size="tiny" text={value.text} onClick={() => handleClick()}/></>;
+        return <><Button size="tiny" text={value.text} onClick={() => handleClick()} {...value}/></>;
       case 'link':
         if (!!Component)
         return <Component to={value.to}>{value.text}</Component>;

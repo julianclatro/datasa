@@ -14,7 +14,6 @@ type TableProps = {
       | 'icon'
       | 'dropdown'
       | 'person'
-      | 'button'
       | 'image';
     }
   ][];

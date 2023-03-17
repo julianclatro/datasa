@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "@/assets/images/logo_ecohouse.png";
-import instagram from "@/assets/images/instagram_white.svg";
-import youtube from "@/assets/images/youtube_white.svg";
-import twitter from "@/assets/images/twitter_white.svg";
+import logo from "~/assets/images/logo_ecohouse.png";
+import instagram from "~/assets/images/instagram_white.svg";
+import youtube from "~/assets/images/youtube_white.svg";
+import twitter from "~/assets/images/twitter_white.svg";
 
 export const Footer = () => {
   return (
