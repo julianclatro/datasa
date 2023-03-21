@@ -42,7 +42,8 @@ export default function Admin() {
 	console.log('organizations', organizations)
 
   return (
-		<div className="mx-auto w-[1080px] mt-[20px]">
+		<div className="">
+			<div className="mx-auto w-[1080px] mt-[20px]">
 			<div className="flex flex-row justify-between mb-[40px]">
         <div className="flex flex-row space-x-[8px]">
           <Button size="tiny" text="Datos" type="link" to="/admin/posts" variant="primary" component={Link}/>
@@ -54,7 +55,10 @@ export default function Admin() {
           <Dropdown items={items} button={{ text: 'Nuevo',icon: 'chevron_down', size:'tiny'}} />
         </div>
       </div>
-			<Outlet />
+			</div>
+			<div className="p-[20px]">
+				<Outlet />
+			</div>
 		</div>
   );
 }
