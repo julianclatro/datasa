@@ -24,10 +24,15 @@ export default function Posts() {
   const data = posts.map((post: any) => {
     return [
       { value: post.publish_date, type: 'simple'},
-      { value: post.information, type: 'simple'},
-      { value: post.organization.name, type: 'simple'},
       { value: post.axis.name, type: 'simple'},
       { value: !!post.category ? post.category.name : '' , type: 'simple'},
+      { value: post.region, type: 'simple'},
+      { value: post.impact, type: 'simple'},
+      { value: post.information, type: 'simple'},
+      { value: post.organization.name, type: 'simple'},
+      { value: post.info_date, type: 'simple'},
+      { value: post.info_type, type: 'simple'},
+      { value: { to: post.link, text: 'link'}, type: 'link'},
       { value: { icon: 'edit', onClick: () => openModal({type: 'edit_post', content: post })}, type: 'button'},
     ]
   })
@@ -35,7 +40,7 @@ export default function Posts() {
 
   return (      
       <Table
-        header={['Fecha', 'Dato', 'Organizacion', 'Eje', 'Categoria', 'Acciones']} 
+        header={['Fecha', 'Eje', 'Categoria', 'Region', 'Impacto', 'Dato', 'Organizacion', 'Fecha Dato', 'Tipo de Dato', 'Link',  'Acciones']} 
         data={data}      
       />
     

@@ -5,6 +5,7 @@ type CellProps = {
   value: string | { text: string, to: string } | { text: string, imageUrl: string } | { text:string, content: any, onClick?: any } | any;
   type:
     | 'simple'
+    | 'internal_link'
     | 'link'
     | 'description'
     | 'extended'
@@ -17,7 +18,7 @@ type CellProps = {
 
 // type DropdownItemsI = {
 //   title: string;
-//   type: 'button' | 'link';
+//   type: 'button' | 'internal_link';
 //   action?: () => void;
 //   to?: string;
 // }[];
@@ -61,9 +62,11 @@ export const Cell: React.FC<CellProps> = ({ type, value, component: Component })
         );
       case 'button':
         return <><Button size="tiny" text={value.text} onClick={() => handleClick()} {...value}/></>;
-      case 'link':
+      case 'internal_link':
         if (!!Component)
         return <Component to={value.to}>{value.text}</Component>;
+      case 'link':
+        return <a href={value.to}>{value.text}</a>;
       case 'badge':
         return <></>;
       case 'icon':

@@ -50,11 +50,11 @@ export const Table: React.FC<TableProps> = ({ header, data, component, backgroun
                   <tbody className="bg-white divide-y divide-neutral-200"> 
                     {data.map((row, key) => {
                       return (
-                        <tr key={key}>
+                        <tr key={key} className="odd:bg-white even:bg-slate-200">
                           {row.map((column, key) => {
                             return (
                               <td
-                                className={`${ background === 'default' ? 'bg-neutral-100' : 'bg-neutral-150'} text-neutral-800 whitespace-nowrap h-[64px]`}
+                                className={`text-neutral-800 whitespace-nowrap h-[64px]`}
                                 key={key}
                               >
                                 <Cell type={column.type} value={column.value} component={component} />
