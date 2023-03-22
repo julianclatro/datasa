@@ -21,7 +21,7 @@ export class PostBuilder {
       const category = categories.find(({id}: any) => id === categories_id)
       const axis = axes.find(({id}: any) => id === axis_id )
       const organization = organizations.find(({id}: any) => id === organizations_id )
-
+      
       return { category, axis, organization, ...post }
     })
   }
