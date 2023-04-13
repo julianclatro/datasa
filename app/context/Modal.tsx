@@ -1,13 +1,13 @@
-import React, { type ReactElement, type FunctionComponent } from 'react';
-import { Modal as ModalComponent } from '~/components/Modal';
-import { EditPost, NewPost } from '~/compositions'
+import React, { type ReactElement, type FunctionComponent } from "react";
+import { Modal as ModalComponent } from "~/components/Modal";
+import { EditPost, NewPost } from "~/compositions";
 type ModalContextType = {
   isOpen: boolean;
   openModal: (action: {
     type: string;
     content?: any;
-    padding?: 'none' | 'small' | 'medium' | 'large';
-    size?: 'small' | 'medium' | 'large' | 'fit';
+    padding?: "none" | "small" | "medium" | "large";
+    size?: "small" | "medium" | "large" | "fit";
     showBar?: boolean;
     onClose?: () => void;
   }) => void;
@@ -16,52 +16,74 @@ type ModalContextType = {
 };
 
 enum ModalTypeE {
-  NEW_POST = 'new_post',
-  EDIT_POST = 'edit_post',
+  NEW_POST = "new_post",
+  EDIT_POST = "edit_post",
 }
 
 const modalAssert = (action: { type: string; content?: any }) => {
+  let modalContent;
   switch (action.type) {
-    case ModalTypeE.NEW_POST:
-      const { organizations, axes, categories } = action.content
-      return <NewPost organizations={organizations} axes={axes} categories={categories} />
-    case ModalTypeE.EDIT_POST:
-      return <EditPost post={action.content} />
+    case ModalTypeE.NEW_POST: {
+      const { organizations, axes, categories } = action.content as any;
+      modalContent = (
+        <NewPost
+          organizations={organizations}
+          axes={axes}
+          categories={categories}
+        />
+      );
+      break;
+    }
+    case ModalTypeE.EDIT_POST: {
+      const { organizations, axes, categories, post } = action.content as any;
+      modalContent = (
+        <EditPost
+          post={post}
+          organizations={organizations}
+          axes={axes}
+          categories={categories}
+        />
+      );
+      break;
+    }
     default:
-      return <></>;
+      modalContent = <></>;
+      break;
   }
+  return modalContent;
 };
 
 export const ModalContext = React.createContext<ModalContextType>(
   {} as ModalContextType
 );
 
-export const ModalProvider: FunctionComponent<{ children: ReactElement }> = ({ children }) => {
-
+export const ModalProvider: FunctionComponent<{ children: ReactElement }> = ({
+  children,
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [state, setState] = React.useState<{
     type: string;
     content?: any;
     onClose?: any;
-    padding?: 'none' | 'small' | 'medium' | 'large';
-    size?: 'small' | 'medium' | 'large' | 'fit';
+    padding?: "none" | "small" | "medium" | "large";
+    size?: "small" | "medium" | "large" | "fit";
     showBar?: any;
     overflow?: any;
   }>({
-    type: '',
+    type: "",
     content: {},
     onClose: () => {},
-    padding: 'large',
-    size: 'large',
+    padding: "large",
+    size: "large",
     showBar: true,
-    overflow: false
+    overflow: false,
   });
 
   const openModal = (action: {
     type: string;
     content?: any;
-    padding?: 'none' | 'small' | 'medium' | 'large';
-    size?: 'small' | 'medium' | 'large' | 'fit';
+    padding?: "none" | "small" | "medium" | "large";
+    size?: "small" | "medium" | "large" | "fit";
     showBar?: any;
     overflow?: any;
     onClose?: any;
@@ -95,8 +117,8 @@ export const ModalProvider: FunctionComponent<{ children: ReactElement }> = ({ c
       <ModalComponent
         initialState={isOpen}
         closeModal={closeModal}
-        padding={state.padding ? state.padding : 'large'}
-        size={state.size ? state.size : 'large'}
+        padding={state.padding ? state.padding : "large"}
+        size={state.size ? state.size : "large"}
         showBar={state.showBar}
         overflow={state.overflow}
       >

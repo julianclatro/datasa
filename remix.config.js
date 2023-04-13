@@ -10,10 +10,14 @@ module.exports = {
   serverMinify: true,
   serverModuleFormat: "esm",
   serverPlatform: "neutral",
-  future: {
-    unstable_tailwind: true,
-  },
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
+  future: {
+    unstable_tailwind: true,
+    v2_errorBoundary: false,
+    v2_meta: false,
+    v2_normalizeFormMethod: false,
+    v2_routeConvention: true,
+  },
 };

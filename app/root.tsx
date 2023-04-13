@@ -15,6 +15,7 @@ export const meta: MetaFunction = () => ({
   title: "DATASA",
   viewport: "width=device-width,initial-scale=1",
 });
+
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];

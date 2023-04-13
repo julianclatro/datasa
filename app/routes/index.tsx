@@ -10,7 +10,6 @@ export async function loader({
 	request,
 }: LoaderArgs) {
   const { DB } = context.env as any
-  console.log('DB', DB)
   const axis = await Axis.all(DB)
   const posts = await Post.all(DB)
   const publishedPosts = posts.filter((post: any) => post.is_published === "true" && post)

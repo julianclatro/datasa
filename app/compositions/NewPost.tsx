@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from '~/components/Form'
+
 type NewPostProps = {
   organizations: any,
   axes: any

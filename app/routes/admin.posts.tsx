@@ -5,6 +5,8 @@ import { Post } from "~/models/Post.server";
 import { Table } from '~/components/Table';
 import { Link } from '@remix-run/react'
 import { useModal } from "~/context/Modal";
+import { CategoryBuilder } from "~/builders/CategoryBuilder.server";
+import { Organization, Axis } from "~/models";
 import { PostBuilder } from "~/builders"
 export async function loader({
 	context,
@@ -13,12 +15,17 @@ export async function loader({
   const { DB } = context.env as any
   console.log('DB', DB)
   const posts = await new PostBuilder({DB}).setup()
-  return json({ posts });
+  const organizations = await Organization.all(DB)
+  const builder = new CategoryBuilder({ DB })
+  const categories = await builder.setup()
+  const axes = await Axis.all(DB)
+
+  return json({ posts, categories, organizations, axes });
 }
 
 
 export default function Posts() {
-  const { posts }: any = useLoaderData();
+  const { posts, organizations, categories, axes }: any = useLoaderData();
   console.log('posts', posts)
   const { openModal } = useModal()
   const data = posts.map((post: any) => {
@@ -33,7 +40,7 @@ export default function Posts() {
       { value: post.info_date, type: 'simple'},
       { value: post.info_type, type: 'simple'},
       { value: { to: post.link, text: 'link'}, type: 'link'},
-      { value: { icon: 'edit', onClick: () => openModal({type: 'edit_post', content: post })}, type: 'button'},
+      { value: { icon: 'edit', onClick: () => openModal({type: 'edit_post', content: { post, organizations, categories, axes } })}, type: 'button'},
     ]
   })
 

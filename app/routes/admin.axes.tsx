@@ -12,19 +12,19 @@ export async function loader({
 }: LoaderArgs) {
   const { DB } = context.env as any
   console.log('DB', DB)
-  const categories = await Axis.all(DB)
-  return json({ categories });
+  const axes = await Axis.all(DB)
+  return json({ axes });
 }
 
 
 export default function Axes() {
-  const { categories }: any = useLoaderData();
-  console.log('categories', categories)
+  const { axes }: any = useLoaderData();
+  console.log('axes', axes)
   const { openModal } = useModal()
-  const data = categories.map((category: any) => {
+  const data = axes.map((axis: any) => {
     return [
-      { value: category.name, type: 'simple'},
-      { value: { icon: 'edit', onClick: () => openModal({type: 'edit_category', content: category })}, type: 'button'},
+      { value: axis.name, type: 'simple'},
+      { value: { icon: 'edit', onClick: () => openModal({type: 'edit_axis', content: axis })}, type: 'button'},
     ]
   })
 
