@@ -46,31 +46,19 @@ export default function Index() {
       <About />
       <div className="w-[720px] mx-auto mb-[40px]">
         <div className="flex justify-center flex-wrap flex-row mt-2 p-8 gap-4">
-          {!axe ? (
-            axis.map((axi: any, key: number) => {
-              return (
-                <div
-                  key={key}
-                  className={`p-4 border border-red-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-red-400`}
-                  onClick={() => setAxe(axi.id)}
-                >
-                  {axi.name}
-                </div>
-              );
-            })
-          ) : (
-            axis.map((axi: any, key: number) => {
-              return (
-                <div
-                  key={key}
-                  className={`p-4 border border-red-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-red-400`}
-                  onClick={() => setAxe(axi.id)}
-                >
-                  {axi.name}
-                </div>
-              );
-            })
-          )}
+          {axis.map((axi: any, key: number) => {
+            return (
+              <div
+                key={key}
+                className={`p-4 border border-red-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-red-400 ${
+                  axi.id === axe && "bg-red-300 text-red-900"
+                }`}
+                onClick={() => setAxe(axi.id)}
+              >
+                {axi.name}
+              </div>
+            );
+          })}
         </div>
         <div>
           <div>
