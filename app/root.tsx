@@ -27,7 +27,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="light">
+      <body className="light bg-background" >
         <ModalProvider>
           <div>
             <Outlet />

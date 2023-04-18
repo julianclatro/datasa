@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useModal } from '~/context/Modal';
+import { Button } from '~/components/Button';
 
 export const About = () => {
+  const { closeModal } = useModal();
+
   return (
     <div className="-mt-16 min-h-48 px-8 xl:px-0">
       <div className="max-w-screen-xl mx-auto pt-28 pb-8">
@@ -16,6 +19,7 @@ export const About = () => {
           activistas, periodistas, gobiernos, escuelas y estudiantes!
         </div>
       </div>
+      <Button type="button" onClick={() => closeModal()} text="Continuar"/>
     </div>
   );
 };
