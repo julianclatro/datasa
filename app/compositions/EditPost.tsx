@@ -24,7 +24,6 @@ export const EditPost: React.FC<EditPostProps> = ({
       // setLoader({ status: true, text: 'Saving' });
     }
     if (fetcher.type === 'done') {
-      // closeModal()
       closeModal();
       // const { status, message } = fetcher.data
       // openNotification({ title: message, status });

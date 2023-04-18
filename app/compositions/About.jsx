@@ -15,12 +15,6 @@ export const About = () => {
           acceder libremente al conocimiento. ¡Es de gran utilidad para
           activistas, periodistas, gobiernos, escuelas y estudiantes!
         </div>
-        <Link
-          to="/datos"
-          className="rounded-md bg-red font-bold text-white py-4 px-8"
-        >
-          Ingresar
-        </Link>
       </div>
     </div>
   );
