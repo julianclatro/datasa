@@ -12,7 +12,6 @@ export async function loader({
 	request,
 }: LoaderArgs) {
 	const { DB } = context.env as any
-  console.log('DB', DB)
   let organizations = await Organization.all(DB)
 	let axes = await Axis.all(DB)
 	let categories = await Category.all(DB)
@@ -39,7 +38,6 @@ export default function Admin() {
 		{ text: 'Ejes', type: 'button', action: () => openModal({type: 'new_axis'}) },
 		{ text: 'Categorias', type: 'button', action: () => openModal({type: 'new_category'}) },
 	]
-	console.log('organizations', organizations)
 
   return (
 		<div className="">

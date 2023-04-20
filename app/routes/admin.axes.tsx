@@ -11,7 +11,6 @@ export async function loader({
 	request,
 }: LoaderArgs) {
   const { DB } = context.env as any
-  console.log('DB', DB)
   const axes = await Axis.all(DB)
   return json({ axes });
 }
@@ -19,7 +18,6 @@ export async function loader({
 
 export default function Axes() {
   const { axes }: any = useLoaderData();
-  console.log('axes', axes)
   const { openModal } = useModal()
   const data = axes.map((axis: any) => {
     return [

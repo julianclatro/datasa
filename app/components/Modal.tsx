@@ -38,7 +38,7 @@ export const Modal: React.FC<ModalProps> = ({
   const containerStyle = clsx(
     padding === 'small' && 'p-2',
     padding === 'medium' && 'p-4',
-    padding === 'large' && 'p-[40px]'
+    padding === 'large' && 'p-[20px] sm:p-[40px]'
   );
 
   const barStyle = clsx(

@@ -31,7 +31,7 @@ export default function Index() {
   };
 
   React.useEffect(() => {
-    openModal({type: 'welcome', padding: 'large'})
+    openModal({type: 'welcome'})
   }, [])
 
   React.useEffect(() => {
@@ -49,8 +49,7 @@ export default function Index() {
   return (
     <div>
       <Header />
-      {/* <About /> */}
-      <div className="w-[720px] mx-auto mb-[40px]">
+      <div className="w-full sm:w-[720px] p-[20px] mx-auto mb-[40px]">
         <div className="flex justify-center flex-wrap flex-row mt-2 p-8 gap-4">
           {axis.map((axi: any, key: number) => {
             return (
@@ -73,7 +72,6 @@ export default function Index() {
               {
                 results.length > 0 &&
                   results.map((post: any, key: number) => {
-                    console.log('post', post)
                     return (
                       <div
                         key={key}

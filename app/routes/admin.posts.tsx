@@ -13,7 +13,6 @@ export async function loader({
 	request,
 }: LoaderArgs) {
   const { DB } = context.env as any
-  console.log('DB', DB)
   const posts = await new PostBuilder({DB}).setup()
   const organizations = await Organization.all(DB)
   const builder = new CategoryBuilder({ DB })
@@ -26,7 +25,6 @@ export async function loader({
 
 export default function Posts() {
   const { posts, organizations, categories, axes }: any = useLoaderData();
-  console.log('posts', posts)
   const { openModal } = useModal()
   const data = posts.map((post: any) => {
     return [

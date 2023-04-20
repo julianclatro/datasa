@@ -11,7 +11,6 @@ export async function loader({
 	request,
 }: LoaderArgs) {
   const { DB } = context.env as any
-  console.log('DB', DB)
   const organizations = await Organization.all(DB)
   return json({ organizations });
 }

@@ -9,6 +9,7 @@
     "start": "cross-env NODE_ENV=production npm run wrangler",
     "db:schema:production": "npx wrangler d1 execute datasa --file ./db/schema.sql",
     "db:seeds:production": "npx wrangler d1 execute datasa --file ./db/seeds.sql",
+    "db:seeds:migration": "npx wrangler d1 execute datasa --file ./db/migration/datasa-19-04-2023.sql",
     "db:schema:local": "npx wrangler d1 execute datasa --file ./db/schema.sql --local",
     "db:seeds:local": "npx wrangler d1 execute datasa --file ./db/seeds.sql --local",
     "typecheck": "tsc",
