@@ -50,7 +50,7 @@ export default function Index() {
     <div>
       <Header />
       <div className="w-full sm:w-[720px] p-[20px] mx-auto mb-[40px]">
-        <div className="text-h4-normal-bold">Categorias</div>
+        <div className="text-h4-normal-bold">Categorías</div>
         <div className="flex justify-left flex-wrap flex-row mt-2 p-4 gap-4 mb-4">
           {axis.map((axi: any, key: number) => {
             return (
