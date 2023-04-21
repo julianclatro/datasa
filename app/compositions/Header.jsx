@@ -7,7 +7,7 @@ import twitter from "~/assets/images/twitter.svg";
 
 export const Header = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-8 xl:px-0">
+    <div className="w-full sm:w-[720px] mx-auto px-8 xl:px-0">
       <header className="py-6 flex">
         <div className="flex-1">
           <a href="/">

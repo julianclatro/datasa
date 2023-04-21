@@ -50,13 +50,14 @@ export default function Index() {
     <div>
       <Header />
       <div className="w-full sm:w-[720px] p-[20px] mx-auto mb-[40px]">
-        <div className="flex justify-center flex-wrap flex-row mt-2 p-8 gap-4">
+        <div className="text-h4-normal-bold">Categorias</div>
+        <div className="flex justify-left flex-wrap flex-row mt-2 p-4 gap-4 mb-4">
           {axis.map((axi: any, key: number) => {
             return (
               <div
                 key={key}
-                className={`p-4 border border-blue-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-blue-400 ${
-                  axi.id === axe ? "bg-blue-300 text-blue-900" : "bg-blue-100 text-blue-500"
+                className={`text-paragraph-small-medium text-paragraph-medium-medium p-4 border border-green-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-green-400 ${
+                  axi.id === axe ? "bg-green-300 text-green-900" : "bg-green-100 text-green-500"
                 }`}
                 onClick={() => setAxe(axi.id)}
               >
