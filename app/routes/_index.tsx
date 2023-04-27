@@ -73,6 +73,7 @@ export default function Index() {
               {
                 results.length > 0 &&
                   results.map((post: any, key: number) => {
+                    console.log('post', post)
                     return (
                       <div
                         key={key}
@@ -81,6 +82,9 @@ export default function Index() {
                         <div className="flex flex-row justify-between">
                           <div className="text-caption-bold">
                             {post.axis && post.axis.name} {'/'} {post.category && post.category.name}
+                          </div>
+                          <div className="text-caption-bold">
+                            {post.info_date && post?.info_date}
                           </div>
                           <div className="text-caption-bold">
                             {post.impact && post?.impact}

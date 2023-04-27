@@ -3,11 +3,11 @@ import { useFetcher } from '@remix-run/react';
 import { Form } from "~/components/Form";
 import { useModal } from '~/context/Modal';
 
-type EditOrganizationProps = {
+type EditCategoryProps = {
   organization: any;
 };
 
-export const EditOrganization: React.FC<EditOrganizationProps> = ({
+export const EditCategory: React.FC<EditCategoryProps> = ({
   organization,
 }) => {
   const fetcher = useFetcher();

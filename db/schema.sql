@@ -55,6 +55,7 @@ CREATE TABLE [posts] (
   [info_type] TEXT NULL,
   [source] TEXT NULL,
   [link] TEXT NULL,
+  [link_status] TEXT NULL,
   [created_at] TEXT,
   [updated_at] TEXT,
   [deleted_at] TEXT

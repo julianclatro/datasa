@@ -2,13 +2,14 @@ import { type ActionFunction, json } from '@remix-run/cloudflare';
 import { createUserSession } from '~/utils/session.server';
 
 function validateLenght(password: unknown) {
-  if (typeof password !== 'string' || password.length < 3) {
+  if (typeof password !== 'string' || password !== 'rusa') {
     return `passwords must be at least 3 characters long`;
   }
 }
 
 function validateusername(username: unknown) {
-  if (typeof username !== 'string' || username.length < 3) {
+  console.log("username", username)
+  if (typeof username !== 'string' || username !== 'rusa') {
     return `usernames must be at least 3 characters long`;
   }
 }
@@ -38,18 +39,18 @@ export let action: ActionFunction = async ({
   // console.log("sessionStorage", env)
   console.log("LOGIN INFO", typeof username, typeof password, username, password)
 
-  // if (typeof username !== 'string' || typeof password !== 'string') {
-  //   return { formError: `Form not submitted correctly.` };
-  // }
+  if (typeof username !== 'string' || typeof password !== 'string') {
+    return { formError: `Form not submitted correctly.` };
+  }
   
-  // let fields = { username, password };
-  // let fieldErrors = {
-  //   username: validateusername(username),
-  //   password: validateLenght(password)
-  // };
-  // if (Object.values(fieldErrors).some(Boolean)) return { fieldErrors, fields };
+  let fields = { username, password };
+  let fieldErrors = {
+    username: validateusername(username),
+    password: validateLenght(password)
+  };
+  console.log('fieldErrors', fieldErrors)
+  if (Object.values(fieldErrors).some(Boolean)) return { fieldErrors, fields };
   try {
-   
     return await createUserSession(sessionStorage, { isAuthed: true })
   } catch (error: any) {
     return json({message: 'Something went wrong'})

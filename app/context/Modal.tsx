@@ -1,6 +1,6 @@
 import React, { type ReactElement, type FunctionComponent } from "react";
 import { Modal as ModalComponent } from "~/components/Modal";
-import { EditPost, NewPost, About } from "~/compositions";
+import { EditPost, NewPost, EditOrganization, About } from "~/compositions";
 
 type ModalContextType = {
   isOpen: boolean;
@@ -20,6 +20,7 @@ enum ModalTypeE {
   WELCOME = 'welcome',
   NEW_POST = "new_post",
   EDIT_POST = "edit_post",
+  EDIT_ORGANIZATION = "edit_organization",
 }
 
 const modalAssert = (action: { type: string; content?: any }) => {
@@ -47,6 +48,16 @@ const modalAssert = (action: { type: string; content?: any }) => {
           organizations={organizations}
           axes={axes}
           categories={categories}
+        />
+      );
+      break;
+    }
+    case ModalTypeE.EDIT_ORGANIZATION: {
+      // const { organizations, axes, categories, post } = action.content as any;
+      console.log('action.content', action.content)
+      modalContent = (
+        <EditOrganization
+          organization={action.content}
         />
       );
       break;

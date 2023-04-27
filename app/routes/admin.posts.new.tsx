@@ -31,7 +31,7 @@ export default function New() {
 
   React.useEffect(() => {
     // console.log('fetcher', fetcher)
-    if (fetcher.type === 'done') {
+    if (fetcher.state === 'idle') {
       console.log(fetcher.data)
     }
   }, [fetcher]);

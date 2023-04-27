@@ -23,6 +23,7 @@ export interface PostDataI {
   info_type?: string
   source?: string
   link?: string
+  link_status?: string;
 }
 
 export interface PostI extends Model  {

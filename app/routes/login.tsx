@@ -5,7 +5,7 @@ export default function Login() {
   const fetcher = useFetcher();
 
   React.useEffect(() => {
-    if (fetcher.type === 'done') {
+    if (fetcher.state === 'idle') {
       console.log(fetcher.data)
     }
   }, [fetcher]);

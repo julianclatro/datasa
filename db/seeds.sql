@@ -11,7 +11,6 @@ INSERT INTO axis VALUES
 ('e94b4ade-b5de-4f4f-84fc-2316e79b8822','Océano','','',''),
 ('65ae1eaf-67e6-4653-9ce4-2fb6011f1b4b','Minería','','',''),
 ('7cb5e278-46fb-4f34-9602-00bc26f39d7f','Política','','',''),
-('1c86958f-2064-4563-96e1-75f5065771ee','Poítica','','',''),
 ('d9f73af5-b3a4-46cd-bfa6-0073fff4f834','Economía y finanzas','','',''),
 ('fb5bc4fd-fd85-494e-adc1-c28fad50c3ab','Agroindustria','','',''),
 ('28ac910d-e16a-4c83-9c67-7078e027db7e','Desastres socioambientales','','','');

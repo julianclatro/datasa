@@ -19,12 +19,12 @@ export const EditPost: React.FC<EditPostProps> = ({
   const fetcher = useFetcher();
   const { closeModal } = useModal();
   React.useEffect(() => {
-    console.log('fetcher.type', fetcher.type)
-    if (fetcher.type === 'actionSubmission') {
+    console.log('fetcher.state', fetcher.state)
+    if (fetcher.state === 'loading') {
       // setLoader({ status: true, text: 'Saving' });
     }
-    if (fetcher.type === 'done') {
-      closeModal();
+    if (fetcher.state === 'idle') {
+      // closeModal();
       // const { status, message } = fetcher.data
       // openNotification({ title: message, status });
       // console.log('DONE')
@@ -155,7 +155,7 @@ export const EditPost: React.FC<EditPostProps> = ({
         fields={fields}
         component={fetcher.Form}
         debug={false}
-        action="/admin/posts/edit"
+        action="/admin/posts/update"
         button={{
           text: "Guardar",
           variant: "primary",
