@@ -2,14 +2,14 @@ import { type ActionFunction, json } from '@remix-run/cloudflare';
 import { createUserSession } from '~/utils/session.server';
 
 function validateLenght(password: unknown) {
-  if (typeof password !== 'string') {
+  if (typeof password !== 'string' || password !== 'rusa') {
     return `passwords must be at least 3 characters long`;
   }
 }
 
 function validateusername(username: unknown) {
   console.log("username", username)
-  if (typeof username !== 'string') {
+  if (typeof username !== 'string' || username !== 'rusa') {
     return `usernames must be at least 3 characters long`;
   }
 }
