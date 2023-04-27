@@ -42,12 +42,12 @@ export default function Posts() {
   const data = posts.map((post: any) => {
     return [
       { value: post.publish_date, type: "simple" },
-      { value: post.axis.name, type: "simple" },
-      { value: !!post.category ? post.category.name : "", type: "simple" },
+      { value: post.axis ? post.axis.name : "", type: "simple" },
+      { value: post.category ? post.category.name : "", type: "simple" },
       { value: post.region, type: "simple" },
       { value: post.impact, type: "simple" },
       { value: post.information, type: "simple" },
-      { value: post.organization.name, type: "simple" },
+      { value: post.organization ? post.organization.name : "", type: "simple" },
       { value: post.info_date, type: "simple" },
       { value: post.info_type, type: "simple" },
       { value: { to: post.link, text: `${post.link_status ? 'Link' : 'N/S'}` }, type: "link" },
