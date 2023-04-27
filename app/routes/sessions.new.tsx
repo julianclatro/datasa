@@ -53,6 +53,6 @@ export let action: ActionFunction = async ({
   try {
     return await createUserSession(sessionStorage, { isAuthed: true })
   } catch (error: any) {
-    return json({message: 'Something went wrong'})
+    return json({message: 'Something went wrong', error: error})
   }
 };
