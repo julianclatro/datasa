@@ -40,7 +40,7 @@ export const EditOrganization: React.FC<EditOrganizationProps> = ({
       field: {
         type: "text",
         id: "name",
-        label: "Dato",
+        label: "Nombre",
         defaultValue: name,
       },
     },

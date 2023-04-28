@@ -40,7 +40,7 @@ export const EditAxe: React.FC<EditAxeProps> = ({
       field: {
         type: "text",
         id: "name",
-        label: "Dato",
+        label: "Nombre",
         defaultValue: name,
       },
     },
