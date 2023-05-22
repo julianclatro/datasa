@@ -2,7 +2,7 @@ import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "react-router";
 import { Axis } from "~/models/Axis.server";
-import { Table } from '~/components/Table';
+import { Table } from 'datasa-design-system';
 import { Link } from '@remix-run/react'
 import { useModal } from "~/context/Modal";
 

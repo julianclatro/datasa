@@ -26,6 +26,7 @@ export const postsSchema: SchemaConfigI = new Schema({
     { name: 'source', type: 'string' },
     { name: 'link', type: 'string' },
     { name: 'link_status', type: 'string' },
+    { name: 'link_status_timestamp', type: 'string' },
   ],
 })
 

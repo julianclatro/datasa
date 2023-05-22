@@ -24,6 +24,7 @@ export interface PostDataI {
   source?: string
   link?: string
   link_status?: string;
+  link_status_timestamp?: string;
 }
 
 export interface PostI extends Model  {

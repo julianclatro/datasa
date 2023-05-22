@@ -8,70 +8,97 @@ export const loader = async ({ params, context }: LoaderArgs) => {
   const { id } = params;
   if (!id) return;
   const post = await Post.findById(id, DB);
-  console.log("ID", id);
+  console.log("ID", id, post);
   return json({ ...post });
 };
 
-export default function Share() {
-  // convertir a imagen y mandar a instagram.
-  const dimentions = { height: 500, width: 500 };
-  const data = useLoaderData();
+interface CanvasTextProps {
+  text: string;
+  imageUrl: string;
+}
 
-  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+const CanvasText: React.FC<CanvasTextProps> = ({ text, imageUrl }) => {
+  const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
+  const padding = 20;
+
   React.useEffect(() => {
-    if (!canvasRef) return;
-    const canvas = canvasRef.current as HTMLCanvasElement;
-    // const text = canvasRef.current as HTMLCanvasElement;
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
 
-    // const text = canvas.getContext("2d");
-    const background = canvas.getContext("2d");
+    const context = canvas.getContext("2d");
 
-    if (!background) return;
-    background.fillStyle = "black";
-    background.fillRect(0, 0, dimentions.height, dimentions.width);
+    if (!context) {
+      return;
+    }
 
-    // if (!text) return;
-    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = () => {
+      context.drawImage(img, 0, 0, 500, 500);
+      const drawText = (fontSize: number, maxCharactersPerLine: number) => {
+        context.fillStyle = "white"; // Set the font color to white
+        context.font = `${fontSize}px monospace`;
+        context.textAlign = "left";
+        context.textBaseline = "top";
 
-    if (!ctx) return;
+        let words = text.split(" ");
+        let lineCount = 0;
 
-    // text.fillStyle = "white";
-    // text.font = "25px serif";
-    // text.beginPath();
-    // text.fillText(data.information, 0, 50, 500);
+        for (let i = 0; i < words.length; i++) {
+          let word = words[i];
+          let currentLine = word;
+          let j = i + 1;
 
-    const text =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac quam vitae risus aliquet pulvinar. Donec vitae ex metus. Fusce bibendum urna non lectus ultrices, a rhoncus lectus dapibus. In hendrerit odio vitae velit posuere, vel aliquam ante volutpat. Pellentesque et lacinia lectus. Vestibulum in nisl lacinia, dictum orci nec, rutrum magna. Nullam id libero mauris. Maecenas ut malesuada augue. In mollis bibendum libero, nec sagittis eros facilisis et. Vestibulum sit amet tellus non nibh pharetra commodo. Nulla eu orci et lorem vestibulum varius. Nulla facilisi. Nunc consequat, erat in interdum pharetra, ante dolor auctor ante, eget posuere ipsum massa vel magna. Aliquam eget risus laoreet, efficitur nibh non, eleifend tortor.";
-    const maxWidth = 300; // Set the maximum width of each line
-    let lines = [];
-    let currentLine = "";
-    const words = text.split(" ");
+          while (
+            j < words.length &&
+            currentLine.length + words[j].length < maxCharactersPerLine
+          ) {
+            currentLine += " " + words[j];
+            j++;
+          }
 
-    for (let i = 0; i < words.length; i++) {
-      const word = words[i];
-      const width = ctx.measureText(currentLine + " " + word).width;
-      if (width > maxWidth) {
-        lines.push(currentLine.trim());
-        currentLine = word + " ";
+          context.fillText(
+            currentLine,
+            padding,
+            padding + lineCount * fontSize
+          );
+          lineCount++;
+          i = j - 1;
+        }
+        console.log("maxCharactersPerLine", fontSize, maxCharactersPerLine);
+      };
+
+      let fontSize;
+      let maxCharactersPerLine;
+      if (text.length <= 90) {
+        fontSize = 34;
+        maxCharactersPerLine = 20;
+      } else if (text.length <= 180) {
+        fontSize = 28;
+        maxCharactersPerLine = 25;
+      } else if (text.length <= 270) {
+        fontSize = 24;
+        maxCharactersPerLine = 30;
       } else {
-        currentLine += word + " ";
+        fontSize = 20;
+        maxCharactersPerLine = 35;
       }
-    }
 
-    if (currentLine.trim().length > 0) {
-      lines.push(currentLine.trim());
-    }
+      drawText(fontSize, maxCharactersPerLine);
+    };
+  }, [text, padding]);
 
-    console.log(lines);
-  }, []);
+  return <canvas ref={canvasRef} width={500} height={500} />;
+};
+
+export default function Share() {
+  const data = useLoaderData();
 
   return (
     <div>
-      <canvas
-        ref={canvasRef}
-        width={dimentions.width}
-        height={dimentions.height}
-      ></canvas>
+      <CanvasText text={data.information} imageUrl="https://imagedelivery.net/uDbEDRBQqhBXrrfuCRrATQ/66f1b041-6aa1-4e19-5d67-c3d6081ed800/public" />
     </div>
   );
 }

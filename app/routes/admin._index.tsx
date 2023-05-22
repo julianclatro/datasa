@@ -2,7 +2,7 @@ import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "react-router";
 import { Post } from "~/models/Post.server";
-import { Table } from "~/components/Table";
+import { Table } from "datasa-design-system";
 import { Link } from "@remix-run/react";
 import { useModal } from "~/context/Modal";
 import { CategoryBuilder } from "~/builders/CategoryBuilder.server";
@@ -43,17 +43,21 @@ export default function Posts() {
     return [
       { value: post.publish_date, type: "simple" },
       { value: post.axis ? post.axis.name : "", type: "simple" },
-      { value: post.category ? post.category.name : "", type: "simple" },
-      { value: post.region, type: "simple" },
-      { value: post.impact, type: "simple" },
+      // { value: { to: `/datos/${post.id}/compartir`, text: "C" }, type: "internal_link", component: Link },
+      // { value: post.region, type: "simple" },
+      // { value: post.category ? post.category.name : "", type: "simple" },
+      // { value: post.region, type: "simple" },
+      // { value: post.impact, type: "simple" },
       { value: post.information, type: "simple" },
-      { value: post.organization ? post.organization.name : "", type: "simple" },
+      // { value: { to: `/datos/${post.id}/compartir`, text: post.information }, type: "internal_link", component: Link },
+
+      // { value: post.organization ? post.organization.name : "", type: "simple" },
       { value: post.info_date, type: "simple" },
       { value: post.info_type, type: "simple" },
-      { value: { to: post.link, text: `${post.link_status ? 'Link' : 'N/S'}` }, type: "link" },
+      // { value: { to: post.link, text: `${post.link_status ? 'Link' : 'N/S'}` }, type: "link" },
       {
         value: {
-          icon: "edit",
+          text: "Editar",
           onClick: () =>
             openModal({
               type: "edit_post",
@@ -70,14 +74,15 @@ export default function Posts() {
       header={[
         "Fecha",
         "Eje",
-        "Categoria",
-        "Region",
-        "Impacto",
+        // "Compartir",
+        // "Categoria",
+        // "Region",
+        // "Impacto",
         "Dato",
-        "Organizacion",
+        // "Organizacion",
         "Fecha Dato",
         "Tipo de Dato",
-        "Link",
+        // "Link",
         "Acciones",
       ]}
       data={data}

@@ -17,9 +17,9 @@ export let action: ActionFunction = async ({
     const { DB } = context.env as any
     let form = await request.formData();
     const fields = Array.from(form.entries())
-    const { id, name} = Object.fromEntries(fields) as any;
-
-    const organization = await Organization.update({ id, name }, DB)
+    const { name } = Object.fromEntries(fields) as any;
+    const organizationForm = new OrganizationForm(new Organization({ name }))
+    const organization = await Organization.create(organizationForm, DB)
 
     return json(organization)
   } catch (error: any) {

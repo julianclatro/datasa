@@ -1,6 +1,6 @@
 import React from "react";
 import { useModal } from '~/context/Modal';
-import { Button } from '~/components/Button';
+import { Button } from 'datasa-design-system';
 
 export const About = () => {
   const { closeModal } = useModal();

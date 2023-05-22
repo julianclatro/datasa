@@ -1,4 +1,4 @@
-import stylesheet from "~/tailwind.css";
+import stylesheet from "datasa-design-system/styles/index.css";
 import type { MetaFunction, LinksFunction,  } from "@remix-run/cloudflare";
 import { ModalProvider } from "~/context/Modal";
 import {

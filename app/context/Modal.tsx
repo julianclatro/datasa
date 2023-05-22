@@ -1,6 +1,7 @@
 import React, { type ReactElement, type FunctionComponent } from "react";
-import { Modal as ModalComponent } from "~/components/Modal";
-import { EditPost, NewPost, EditOrganization, About } from "~/compositions";
+import { Modal as ModalComponent } from "datasa-design-system";
+import { EditPost, FormPost, About } from "~/compositions";
+import { FormOrganization } from "~/compositions/FormOrganization";
 
 type ModalContextType = {
   isOpen: boolean;
@@ -17,9 +18,10 @@ type ModalContextType = {
 };
 
 enum ModalTypeE {
-  WELCOME = 'welcome',
+  WELCOME = "welcome",
   NEW_POST = "new_post",
   EDIT_POST = "edit_post",
+  NEW_ORGANIZATION = "new_organization",
   EDIT_ORGANIZATION = "edit_organization",
 }
 
@@ -27,12 +29,12 @@ const modalAssert = (action: { type: string; content?: any }) => {
   let modalContent;
   switch (action.type) {
     case ModalTypeE.WELCOME: {
-      return <About />
+      return <About />;
     }
     case ModalTypeE.NEW_POST: {
       const { organizations, axes, categories } = action.content as any;
       modalContent = (
-        <NewPost
+        <FormPost
           organizations={organizations}
           axes={axes}
           categories={categories}
@@ -52,14 +54,12 @@ const modalAssert = (action: { type: string; content?: any }) => {
       );
       break;
     }
+    case ModalTypeE.NEW_ORGANIZATION: {
+      modalContent = <FormOrganization  />;
+      break;
+    }
     case ModalTypeE.EDIT_ORGANIZATION: {
-      // const { organizations, axes, categories, post } = action.content as any;
-      console.log('action.content', action.content)
-      modalContent = (
-        <EditOrganization
-          organization={action.content}
-        />
-      );
+      modalContent = <FormOrganization organization={action.content} />;
       break;
     }
     default:

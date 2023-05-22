@@ -1,7 +1,7 @@
 import { Outlet, Link, useLoaderData } from "@remix-run/react";
 import { type LoaderArgs, json, redirect } from "@remix-run/cloudflare";
-import { Dropdown, type DropdownItemsI } from '~/components/Dropdown';
-import { Button } from '~/components/Button'
+import { Dropdown } from 'datasa-design-system';
+import { Button } from 'datasa-design-system'
 import { useModal } from "~/context/Modal";
 import { Organization } from "~/models/Organization.server";
 import { Axis } from "~/models/Axis.server";
@@ -38,7 +38,7 @@ export default function Admin() {
 	const { openModal } = useModal()
 	const { organizations, axes, categories } = useLoaderData();
 
-	const items: DropdownItemsI = [
+	const items = [
 		{ text: 'Dato', type: 'button', action: () => openModal({type: 'new_post', content: { organizations, axes, categories }}) },
 		{ text: 'Organizacion', type: 'button', action: () => openModal({type: 'new_organization'}) },
 		{ text: 'Ejes', type: 'button', action: () => openModal({type: 'new_axis'}) },

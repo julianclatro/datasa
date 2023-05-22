@@ -3,14 +3,14 @@ import { useFetcher } from '@remix-run/react';
 import { Form } from "datasa-design-system";
 import { useModal } from '~/context/Modal';
 
-type EditPostProps = {
-  post: any;
+type FormPostProps = {
+  post?: any;
   axes: any;
   organizations: any;
   categories: any;
 };
 
-export const EditPost: React.FC<EditPostProps> = ({
+export const FormPost: React.FC<FormPostProps> = ({
   organizations,
   categories,
   post,

@@ -25,5 +25,4 @@ export class PostBuilder {
       return { category, axis, organization, ...post }
     })
   }
-
 }
