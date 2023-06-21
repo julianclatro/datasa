@@ -1,5 +1,5 @@
 name = "datasa"
-compatibility_date = "2022-04-05"
+compatibility_date = "2023-06-16"
 compatibility_flags = ["streams_enable_constructors"]
 
 kv_namespaces = [

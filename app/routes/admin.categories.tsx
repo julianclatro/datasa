@@ -1,7 +1,7 @@
 import React from 'react';
 import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "@remix-run/react";
 import { Category } from "~/models/Category.server";
 import { Table } from 'datasa-design-system';
 import { Link } from '@remix-run/react'
@@ -17,7 +17,6 @@ export async function loader({
   const categories = await builder.setup()
   return json({ categories });
 }
-
 
 function TreeNode({ node }: any) {
   return (

@@ -1,6 +1,6 @@
 import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "@remix-run/react";
 import { Axis } from "~/models/Axis.server";
 import { Table } from 'datasa-design-system';
 import { Link } from '@remix-run/react'

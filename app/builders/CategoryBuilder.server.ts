@@ -31,7 +31,7 @@ export class CategoryBuilder {
 
     const arr = axes.map((axis: any) => {
       const children = tree.filter((obj: any) => obj.axis_id === axis.id);
-      return { name: axis.name, children }
+      return { name: axis.name, id: axis.id, children }
     })
 
     return arr;

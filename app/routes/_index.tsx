@@ -1,73 +1,48 @@
 import * as React from "react";
 import { type LoaderArgs } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import { useLoaderData } from "react-router";
+import { useLoaderData } from "@remix-run/react";
 import { Axis } from "~/models";
-import { PostBuilder } from "~/builders";
-import { Header, Footer, About } from "datasa-design-system";
+import { PostBuilder, CategoryBuilder } from "~/builders";
+import { Header, Footer, About, CategorySelector } from "datasa-design-system";
 import { useModal } from "~/context/Modal";
 
 export async function loader({ context, request }: LoaderArgs) {
   const { DB } = context.env as any;
   const axis = await Axis.all(DB);
+  const categories = await new CategoryBuilder({ DB }).setup();
+
   const posts = await new PostBuilder({ DB }).setup();
   const publishedPosts = posts.filter(
     (post: any) => post.is_published === "true" && post
   );
 
-  return json({ posts: publishedPosts, axis });
+  return json({ posts: publishedPosts, axis, categories });
 }
 
 export default function Index() {
-  const { posts, axis }: any = useLoaderData();
+  const { posts, categories }: any = useLoaderData();
   const { openModal } = useModal();
-  // const [category, setCategory] = React.useState();
-  const [axe, setAxe] = React.useState(null);
   const [results, setResult] = React.useState(posts);
   const postCount = results.length;
-
-  const filterBy = (id: string) => {
-    return posts.filter(({ axis_id }: any) => axis_id === id);
+  const filterBy = (id: string | null, isChild: boolean) => {
+    if (id === null) {
+      setResult(posts)
+    } else {
+      setResult(posts.filter((post: any) => isChild ? post.categories_id === id : post.axis_id === id))
+    }
   };
-
+  console.log('categories', categories)
   React.useEffect(() => {
     openModal({ type: "welcome" });
   }, []);
-
-  React.useEffect(() => {
-    if (axe) {
-      setResult(filterBy(axe));
-    }
-  }, [axe]);
-
-  // React.useEffect(() => {
-  //   if (category) {
-  //     setResult(filterBy(category));
-  //   }
-  // }, [category]);
 
   return (
     <div>
       <Header />
       <div className="w-full sm:w-[720px] p-[20px] mx-auto mb-[40px]">
         <div className="text-h4-normal-bold">Categorías</div>
-        <div className="flex justify-left flex-wrap flex-row mt-2 p-4 gap-4 mb-4">
-          {axis.map((axi: any, key: number) => {
-            return (
-              <div
-                key={key}
-                className={`text-paragraph-small-medium text-paragraph-medium-medium p-4 border border-green-400 rounded-[40px] cursor-pointer hover:text-white hover:bg-green-400 ${
-                  axi.id === axe
-                    ? "bg-green-300 text-green-700"
-                    : "bg-green-100 text-green-500"
-                }`}
-                onClick={() => setAxe(axi.id)}
-              >
-                {axi.name}
-              </div>
-            );
-          })}
-        </div>
+        <CategorySelector axis={categories} afterSelect={filterBy} />
         <div>
           <div>
             <div>{postCount} resultados.</div>
@@ -96,14 +71,20 @@ export default function Index() {
                       </div>
                       <div className="flex flex-row justify-between">
                         <div>
-                        <a href={post.link} className="underline text-blue-500">
-                          Link
-                        </a>
+                          <a
+                            href={post.link}
+                            className="underline text-blue-500"
+                          >
+                            Link
+                          </a>
                         </div>
                         <div>
-                        <a href={`/datos/${post.id}/compartir`} className="underline text-blue-500">
-                          Compartir
-                        </a>
+                          <a
+                            href={`/datos/${post.id}/compartir`}
+                            className="underline text-blue-500"
+                          >
+                            Compartir
+                          </a>
                         </div>
                       </div>
                     </div>

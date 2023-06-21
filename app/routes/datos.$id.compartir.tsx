@@ -18,9 +18,10 @@ interface CanvasTextProps {
 }
 
 const CanvasText: React.FC<CanvasTextProps> = ({ text, imageUrl }) => {
+  const [imgDataUrl, setImgDataUrl] = React.useState<string | null>(null);
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const padding = 20;
-
+  console.log("imgDataUrl", imgDataUrl)
   React.useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) {
@@ -34,6 +35,7 @@ const CanvasText: React.FC<CanvasTextProps> = ({ text, imageUrl }) => {
     }
 
     const img = new Image();
+    img.crossOrigin = "anonymous";
     img.src = imageUrl;
     img.onload = () => {
       context.drawImage(img, 0, 0, 500, 500);
@@ -87,10 +89,16 @@ const CanvasText: React.FC<CanvasTextProps> = ({ text, imageUrl }) => {
       }
 
       drawText(fontSize, maxCharactersPerLine);
+      const dataUrl = canvas.toDataURL('image/png');
+      setImgDataUrl(dataUrl);
     };
   }, [text, padding]);
 
-  return <canvas ref={canvasRef} width={500} height={500} />;
+  return (
+    <>
+      {imgDataUrl ? <img src={imgDataUrl} alt="Canvas content" /> : <canvas ref={canvasRef} width={500} height={500} />}
+    </>
+  );
 };
 
 export default function Share() {
@@ -98,7 +106,10 @@ export default function Share() {
 
   return (
     <div>
-      <CanvasText text={data.information} imageUrl="https://imagedelivery.net/uDbEDRBQqhBXrrfuCRrATQ/66f1b041-6aa1-4e19-5d67-c3d6081ed800/public" />
+      <CanvasText
+        text={data.information}
+        imageUrl="https://imagedelivery.net/uDbEDRBQqhBXrrfuCRrATQ/42be3c43-b638-473b-ec24-c46f31eaf500/public"
+      />
     </div>
   );
 }
