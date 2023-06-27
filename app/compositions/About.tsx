@@ -1,10 +1,6 @@
 import React from "react";
-import { useModal } from '~/context/Modal';
-import { Button } from 'datasa-design-system';
 
 export const About = () => {
-  const { closeModal } = useModal();
-
   return (
     <div className="px-8 xl:px-0">
       <div className="">
@@ -19,7 +15,6 @@ export const About = () => {
           activistas, periodistas, gobiernos, escuelas y estudiantes!
         </div>
       </div>
-      <Button type="button" onClick={() => closeModal()} text="Continuar"/>
     </div>
   );
 };

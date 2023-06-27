@@ -37,7 +37,7 @@
     "@types/react-dom": "^17",
     "better-sqlite3": "^8.4.0",
     "clsx": "^1.2.1",
-    "datasa-design-system": "0.0.2",
+    "datasa-design-system": "0.0.3",
     "eslint": "^8.27.0",
     "joi": "^17.8.3",
     "luxon": "^3.3.0",

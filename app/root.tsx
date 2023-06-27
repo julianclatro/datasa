@@ -1,6 +1,11 @@
 import stylesheet from "datasa-design-system/styles/index.css";
-import type { MetaFunction, LinksFunction,  } from "@remix-run/cloudflare";
-import { ModalProvider } from "~/context/Modal";
+import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
+import {
+  ModalProvider,
+  CommandProvider,
+  NotificationProvider,
+  useCommand,
+} from "~/context";
 import {
   Links,
   LiveReload,
@@ -10,7 +15,13 @@ import {
   ScrollRestoration,
   isRouteErrorResponse,
   useRouteError,
+  Link,
 } from "@remix-run/react";
+import {
+  Layout as LayoutComponent,
+  Header,
+  Footer,
+} from "datasa-design-system";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -22,6 +33,16 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
+const Layout = ({}) => {
+  const { openCommand } = useCommand();
+  return (
+    <LayoutComponent>
+      <Header openCommand={openCommand} component={Link} />
+      <Outlet />
+      <Footer />
+    </LayoutComponent>
+  );
+};
 export default function App() {
   return (
     <html lang="en">
@@ -29,12 +50,14 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="light bg-background" >
-        <ModalProvider>
-          <div>
-            <Outlet />
-          </div>
-        </ModalProvider>
+      <body className="light bg-background">
+        <CommandProvider>
+          <NotificationProvider>
+            <ModalProvider>
+              <Layout />
+            </ModalProvider>
+          </NotificationProvider>
+        </CommandProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -45,7 +68,7 @@ export default function App() {
 
 export function ErrorBoundary() {
   let error = useRouteError();
-  console.log("ERROR", error)
+  console.log("ERROR", error);
   if (isRouteErrorResponse(error)) {
     return (
       <div>

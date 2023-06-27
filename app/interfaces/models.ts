@@ -1,12 +1,28 @@
 import type { Model } from 'model-one';
 
 export interface UserDataI {
-  id?: string
-  name?: string
+  id?: string;
+  name?: string;
+  email?: string;
+  email_confirm?: string;
+  verify_sent?: string;
+  verify_key?: string;
+  verify_datetime_exp?: string;
 }
 
 export interface UserI extends Model  {
   data: UserDataI
+}
+
+export interface AdminDataI {
+  id?: string
+  name?: string
+  role?: string
+  email?: string
+}
+
+export interface AdminI extends Model  {
+  data: AdminDataI
 }
 
 export interface PostDataI {
@@ -15,6 +31,7 @@ export interface PostDataI {
   organizations_id?: string
   categories_id?: string
   axis_id?: string
+  contributors_id?: string;
   information?: string
   impact?: string
   region?: string

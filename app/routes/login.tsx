@@ -11,9 +11,9 @@ export default function Login() {
   }, [fetcher]);
   return (
     <div className="w-[540px] mx-auto">
-      <div className="flex items-center h-screen">
-        <div className="w-full py-[20px] px-[40px] bg-green-200 rounded-3xl">
-          <h1 className="text-h3-normal-bold font-bold">DATASA ♻️</h1>
+      <div className="flex items-center h-v84">
+        <div className="w-full py-[20px] px-[40px] bg-green-300 rounded-3xl">
+          <div className="text-subheading-medium">Iniciar Sesión</div>
           <fetcher.Form method="post" action="/sessions/new">
             <div className="flex flex-col space-y-4">
               <label>Usuario</label>

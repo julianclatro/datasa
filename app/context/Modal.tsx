@@ -18,7 +18,7 @@ type ModalContextType = {
 };
 
 enum ModalTypeE {
-  WELCOME = "welcome",
+  // WELCOME = "welcome",
   NEW_POST = "new_post",
   EDIT_POST = "edit_post",
   NEW_ORGANIZATION = "new_organization",
@@ -28,9 +28,9 @@ enum ModalTypeE {
 const modalAssert = (action: { type: string; content?: any }) => {
   let modalContent;
   switch (action.type) {
-    case ModalTypeE.WELCOME: {
-      return <About />;
-    }
+    // case ModalTypeE.WELCOME: {
+    //   return <About />;
+    // }
     case ModalTypeE.NEW_POST: {
       const { organizations, axes, categories } = action.content as any;
       modalContent = (

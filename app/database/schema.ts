@@ -6,6 +6,21 @@ export const usersSchema: SchemaConfigI = new Schema({
   columns: [
     { name: 'id', type: 'string' },
     { name: 'name', type: 'string' },
+    { name: 'email', type: 'string' },
+    { name: 'email_confirm', type: 'string' },
+    { name: 'verify_sent', type: 'string' },
+    { name: 'verify_key', type: 'string' },
+    { name: 'verify_datetime_exp', type: 'string' },
+  ],
+})
+
+export const adminsSchema: SchemaConfigI = new Schema({
+  table_name: 'admins',
+  columns: [
+    { name: 'id', type: 'string' },
+    { name: 'role', type: 'string' },
+    { name: 'name', type: 'string' },
+    { name: 'email', type: 'string' },
   ],
 })
 
@@ -17,6 +32,7 @@ export const postsSchema: SchemaConfigI = new Schema({
     { name: 'organizations_id', type: 'string' },
     { name: 'categories_id', type: 'string' },
     { name: 'axis_id', type: 'string' },
+    { name: 'contributors_id', type: 'string' },
     { name: 'information', type: 'string' },
     { name: 'impact', type: 'string' },
     { name: 'region', type: 'string' },
