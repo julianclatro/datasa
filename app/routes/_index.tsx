@@ -37,11 +37,11 @@ export default function Index() {
 
   return (
     <div>
-        <div className="text-h4-normal-bold">Categorías</div>
+        <div className="text-h4-bold text-green-950">Categorías</div>
         <CategorySelector axis={categories} afterSelect={filterBy} />
         <div>
           <div>
-            <div>{postCount} resultados.</div>
+            <div className="text-neutral-600 text-p3-medium">{postCount} resultados.</div>
             <div className="flex flex-col space-y-4">
               {results.length > 0 &&
                 results.map((post: any, key: number) => {

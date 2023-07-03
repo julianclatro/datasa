@@ -46,6 +46,17 @@ export const postsSchema: SchemaConfigI = new Schema({
   ],
 })
 
+export const proposalsSchema: SchemaConfigI = new Schema({
+  table_name: 'proposals',
+  columns: [
+    { name: 'id', type: 'string' },
+    { name: 'users_id', type: 'string' },
+    { name: 'information', type: 'string' },
+    { name: 'link', type: 'string' },
+  ],
+})
+
+
 export const organizationsSchema: SchemaConfigI = new Schema({
   table_name: 'organizations',
   columns: [

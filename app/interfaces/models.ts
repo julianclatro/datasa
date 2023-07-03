@@ -48,6 +48,18 @@ export interface PostI extends Model  {
   data: PostDataI
 }
 
+export interface ProposalDataI {
+  id?: string
+  users_id?: string
+  information?: string
+  link?: string
+}
+
+export interface ProposalI extends Model  {
+  data: ProposalDataI
+}
+
+
 export interface AxisDataI {
   id?: string
   name?: string

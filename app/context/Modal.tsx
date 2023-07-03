@@ -2,6 +2,7 @@ import React, { type ReactElement, type FunctionComponent } from "react";
 import { Modal as ModalComponent } from "datasa-design-system";
 import { EditPost, FormPost, About } from "~/compositions";
 import { FormOrganization } from "~/compositions/FormOrganization";
+import { Confirmation } from '~/compositions/Confirmation';
 
 type ModalContextType = {
   isOpen: boolean;
@@ -23,6 +24,7 @@ enum ModalTypeE {
   EDIT_POST = "edit_post",
   NEW_ORGANIZATION = "new_organization",
   EDIT_ORGANIZATION = "edit_organization",
+  CONFIRMATION = "confirmation",
 }
 
 const modalAssert = (action: { type: string; content?: any }) => {
@@ -60,6 +62,10 @@ const modalAssert = (action: { type: string; content?: any }) => {
     }
     case ModalTypeE.EDIT_ORGANIZATION: {
       modalContent = <FormOrganization organization={action.content} />;
+      break;
+    }
+    case ModalTypeE.CONFIRMATION: {
+      modalContent = <Confirmation />
       break;
     }
     default:
