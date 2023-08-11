@@ -17,7 +17,6 @@ export const CommandProvider: React.FC = ({ children }) => {
   const openCommand = () => setIsOpen(true);
   const closeCommand = () => setIsOpen(false);
   const [query, setQuery] = React.useState("");
-  const [data, setData] = React.useState([]);
   const fetcher = useFetcher();
 
   React.useEffect(() => {
@@ -35,8 +34,6 @@ export const CommandProvider: React.FC = ({ children }) => {
     return result;
   };
 
-  const [selectedPerson, setSelectedPerson] = React.useState([]);
-
   return (
     <CommandContext.Provider value={{ isOpen, openCommand, closeCommand }}>
       {children}
@@ -46,7 +43,6 @@ export const CommandProvider: React.FC = ({ children }) => {
         query={query}
         setQuery={setQuery}
         filterQuery={filterQuery}
-        selectedPerson={selectedPerson}
         constants={{placeholder: 'Buscar datos', no_results: 'Tu busqueda no ha devuelto resultados.'}}
       />
     </CommandContext.Provider>
