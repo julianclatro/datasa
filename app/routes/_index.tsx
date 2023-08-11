@@ -103,12 +103,12 @@ export default function Index() {
                           </a>
                       </div>
                       <div>
-                        <a
+                        {/* <a
                           href={`/datos/${post.id}/compartir`}
                           className="underline text-blue-500"
                         >
                           Compartir
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </div>
